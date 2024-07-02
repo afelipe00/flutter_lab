@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab/config/router/router.dart';
+import 'package:flutter_lab/config/themes/themes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,16 +9,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+    TextTheme textTheme = createTextTheme(context, "Roboto", "Albert Sans");
+
+    MaterialTheme theme = MaterialTheme(textTheme);
+
+    return MaterialApp.router(
+      title: 'Flutter Lab',
+      debugShowCheckedModeBanner: false,
+      theme: theme.dark(),
+      routerConfig: router,
     );
   }
 }
